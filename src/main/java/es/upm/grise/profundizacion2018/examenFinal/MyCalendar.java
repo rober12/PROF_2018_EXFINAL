@@ -3,6 +3,7 @@ package es.upm.grise.profundizacion2018.examenFinal;
 import java.util.Calendar;
 
 public abstract class MyCalendar extends Calendar {
+	// Se crean los getters
 	Calendar c;
 
     MyCalendar (){
@@ -16,5 +17,15 @@ public abstract class MyCalendar extends Calendar {
     }
     int getSeconds(){
         return c.get(Calendar.SECOND);
+    }
+    
+    int getDay(){
+    	return c.get(Calendar.DAY_OF_MONTH);
+    }
+    int getMonth(){
+    	return c.get(Calendar.MONTH);
+    }
+    int getYear(){
+    	return c.get(Calendar.YEAR);
     }
 }

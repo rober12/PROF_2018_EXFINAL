@@ -8,17 +8,12 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.Calendar;
-
 import org.junit.Before;
 import org.junit.Test;
 
 public class GreetingTest {
 	
 	private Greeting greeting = spy(new Greeting());
-
- 
-	private Greeting greting;
 	@Before
 	public void cons(){
 		this.greeting=greeting;
@@ -26,7 +21,7 @@ public class GreetingTest {
 	
 	@Before
 	public void cogiendoHora(){
-		when(this.greeting.getHour()).thenReturn(11);
+		when(this.greeting.getHour()).thenReturn(1);
 	}
 	@Test
 	public void smokeTest1() {
@@ -43,6 +38,7 @@ public class GreetingTest {
 		assertEquals("Buenos días", this.greeting.getGreeting(Language.SPANISH));
 	}
 
+	//Se comprueba que se invoca una vez al metodo getDefaulLanguage y una vez al metodo  getMessage
 	@Test
 	public void smokeTest4(){
 		greeting.getGreeting(null);
@@ -50,9 +46,10 @@ public class GreetingTest {
 		verify(greeting,times(1)).getMessage(anyVararg(),anyVararg());
 	}
 
+	//Se comprueba que se llama una vez al método getMessage y cero veces al método getDefaultMessage en ingles 
 	@Test
 	public void smokeTest5(){
-		greeting.getGreeting(Language.SPANISH);
+		greeting.getGreeting(Language.ENGLISH);
 		verify(greeting,times(0)).getDefaultLanguage();
 		verify(greeting,times(1)).getMessage(anyVararg(),anyVararg());
 	}
